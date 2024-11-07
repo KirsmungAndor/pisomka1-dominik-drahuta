@@ -11,7 +11,6 @@ import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import MenuIcon from '@mui/icons-material/Menu';
 import AccountCircle from '@mui/icons-material/AccountCircle';
-import { useRouter } from 'next/router';
 import { signIn, signOut, useSession } from 'next-auth/react';
 
 const MyMenu = () => {
@@ -30,14 +29,6 @@ const MyMenu = () => {
 
   const handleClose = () => {
     setAnchorEl(null);
-  };
-
-  const handleNavigation = (path: string) => {
-    if (isMounted) {
-      const router = useRouter();
-      router.push(path);
-      handleClose();
-    }
   };
 
   if (!isMounted) {
@@ -79,7 +70,6 @@ const MyMenu = () => {
             open={Boolean(anchorEl)}
             onClose={handleClose}
           >
-            <MenuItem onClick={() => handleNavigation('/')}>Homepage</MenuItem>
             {!session && <MenuItem onClick={() => signIn()}>Login</MenuItem>}
             {session && <MenuItem onClick={() => signOut()}>Logout</MenuItem>}
           </Menu>
