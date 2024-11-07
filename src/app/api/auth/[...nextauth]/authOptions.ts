@@ -21,4 +21,5 @@ export const authOptions: NextAuthOptions = {
       return baseUrl || url; // baseUrl is automatically set from NEXTAUTH_URL in .env
     },
   },
-};
+}; 
+
